@@ -125,7 +125,7 @@ These results show the effectiveness of **TF-IDF + supervised machine learning**
 
 ---
 
-## 🎓 What I Learned
+##  What I Learned
 
 This project strengthened my practical understanding of:
 
@@ -143,7 +143,7 @@ It also provided hands-on experience in taking a machine learning problem from *
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 ### Varsha A
 
