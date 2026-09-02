@@ -1,141 +1,152 @@
-# SMS Spam Detection using Machine Learning
+#  SMS Spam Detection using Machine Learning
 
-## Overview
-
-SMS spam is a common problem where unwanted, promotional, fraudulent, or potentially harmful messages are sent to users. Manually identifying these messages can be difficult, especially when dealing with a large number of incoming messages.
-
-This project develops a **Machine Learning-based SMS Spam Detection system** that automatically classifies messages into two categories:
-
-* **Ham** – Legitimate or normal messages
-* **Spam** – Unwanted, promotional, suspicious, or fraudulent messages
-
-The project uses **Natural Language Processing (NLP)** to transform text messages into numerical features and applies multiple supervised machine learning algorithms to identify the best-performing classification model.
-
-The complete workflow covers data preprocessing, exploratory analysis, text feature extraction, model training, evaluation, model comparison, and prediction of new SMS messages.
+An NLP-based machine learning system that automatically classifies SMS messages as **Spam** or **Ham** using TF-IDF feature extraction and multiple supervised classification algorithms.
 
 ---
 
-## Problem Statement
+##  Overview
 
-With the increasing use of SMS communication, users frequently receive unwanted promotional messages, fake offers, suspicious links, and fraudulent notifications. An automated system is therefore useful for identifying potentially unwanted messages before they reach the user.
+SMS spam is a common problem where users receive unwanted promotional messages, fraudulent offers, suspicious links, and potentially harmful notifications.
 
-The objective of this project is to build a classification model capable of learning patterns from previously labeled SMS messages and predicting whether a new message is **Spam or Ham**.
+This project develops a **Machine Learning-based SMS Spam Detection system** that automatically classifies incoming messages into two categories:
 
----
+*  **Ham** — Legitimate or normal messages
+*  **Spam** — Unwanted, promotional, suspicious, or fraudulent messages
 
-## Technologies and Libraries
-
-The project was developed using Python and the following libraries:
-
-* **Pandas** – Data loading and manipulation
-* **NumPy** – Numerical operations
-* **Matplotlib** – Data visualization
-* **Scikit-learn** – Machine learning and evaluation
-* **Jupyter Notebook** – Development and experimentation
+The project follows a complete machine learning workflow, starting from text preprocessing and exploratory analysis through feature extraction, model training, evaluation, model comparison, and prediction on new SMS messages.
 
 ---
 
-## Text Feature Extraction
+##  Problem Statement
 
-Machine learning algorithms cannot directly process raw text. Therefore, the SMS messages were converted into numerical representations using **TF-IDF (Term Frequency-Inverse Document Frequency)**.
+With the increasing use of SMS communication, users frequently receive unwanted promotional content, fake offers, suspicious links, and fraudulent notifications.
 
-TF-IDF assigns importance to words based on how frequently they occur within a message while considering how common they are across the complete collection of messages.
-
-The project uses:
-
-* Lowercase conversion
-* English stop-word removal
-* Unigrams and bigrams
-* Maximum of 5,000 features
-
-```python
-TfidfVectorizer(
-    lowercase=True,
-    stop_words="english",
-    ngram_range=(1, 2),
-    max_features=5000
-)
-```
-
-Using both unigrams and bigrams allows the model to capture individual words as well as meaningful two-word combinations.
+The objective of this project is to develop a machine learning classification system that can learn patterns from previously labeled SMS messages and predict whether a new message is **Spam or Ham**.
 
 ---
 
-## Models Implemented
+##  Machine Learning Models
 
-Three different classification algorithms were trained and evaluated.
+Three supervised classification algorithms were implemented and compared.
 
 ### 1. Logistic Regression
 
-Logistic Regression is a commonly used classification algorithm that estimates the probability of a sample belonging to a particular class.
+Logistic Regression is a widely used classification algorithm that estimates the probability of a sample belonging to a particular class.
 
-In this project, it is used to classify TF-IDF representations of SMS messages into Ham or Spam.
+In this project, it is used to classify TF-IDF representations of SMS messages into **Spam** or **Ham**.
 
 ### 2. Multinomial Naive Bayes
 
-Multinomial Naive Bayes is particularly suitable for text classification problems because it works effectively with word-frequency and TF-IDF-based representations.
+Multinomial Naive Bayes is well suited for text classification tasks and is commonly used with word-based feature representations.
 
-It provides a fast and efficient approach for detecting patterns commonly associated with spam messages.
+It provides a fast and efficient approach for identifying patterns associated with spam messages.
 
 ### 3. Linear Support Vector Machine
 
-LinearSVC is a Support Vector Machine algorithm designed for classification. It attempts to find an optimal decision boundary that separates the different classes.
+**LinearSVC** is a Support Vector Machine algorithm designed for classification.
 
-It is particularly effective for high-dimensional text data, where TF-IDF can produce thousands of features.
+It finds a decision boundary that separates different classes and performs particularly well on high-dimensional text data such as TF-IDF representations.
 
 ---
-Model Performance
 
-The trained classification models were evaluated using Accuracy, Precision, Recall, and F1 Score.
+##  Model Performance
 
-Model	Accuracy	Precision	Recall	F1 Score
-Logistic Regression	94.27%	95.42%	77.80%	85.71%
-Multinomial Naive Bayes	95.04%	89.31%	88.13%	88.72%
-Support Vector Machine	95.38%	92.65%	85.93%	89.17%
+The models were evaluated using:
 
-## Prediction on New Messages
+* Accuracy
+* Precision
+* Recall
+* F1 Score
 
-The project includes functionality for testing the trained model on new SMS messages.
+| Model                   |   Accuracy | Precision | Recall |   F1 Score |
+| ----------------------- | ---------: | --------: | -----: | ---------: |
+| Logistic Regression     | **94.27%** |    95.42% | 77.80% |     85.71% |
+| Multinomial Naive Bayes | **95.04%** |    89.31% | 88.13% |     88.72% |
+| Linear SVM              | **95.38%** |    92.65% | 85.93% | **89.17%** |
 
-A new message is first transformed using the same TF-IDF vectorizer used during training. The resulting numerical representation is then passed to the selected machine learning model.
+###  Best Performing Model
 
-Example:
+Based on the evaluation results, **Linear Support Vector Machine** achieved the highest overall performance with:
+
+> **95.38% Accuracy and 89.17% F1 Score**
+
+The F1 Score is particularly useful for this classification problem because it considers both **Precision and Recall**, which are important when identifying spam messages.
+
+---
+
+##  Prediction on New Messages
+
+The trained model can be used to classify previously unseen SMS messages.
+
+Before prediction, the new message is transformed using the **same TF-IDF vectorizer fitted during training**.
+
+### Example 1 — Spam
+
+**Input:**
 
 ```text
-Input:
 Congratulations! You have won a free prize. Claim it now!
+```
 
-Prediction:
+**Prediction:**
+
+```text
 SPAM
 ```
 
-Another example:
+### Example 2 — Ham
+
+**Input:**
 
 ```text
-Input:
 Hey, are we meeting at 5 PM today?
+```
 
-Prediction:
+**Prediction:**
+
+```text
 HAM
 ```
 
-This demonstrates how the trained model can be used for real-world text classification.
+---
+
+##  Results & Insights
+
+The experiments demonstrate that traditional machine learning algorithms can perform effectively on text classification problems when combined with appropriate NLP feature engineering.
+
+Among the three tested models:
+
+* Logistic Regression achieved **94.27% accuracy**
+* Multinomial Naive Bayes achieved **95.04% accuracy**
+* Linear SVM achieved the highest accuracy of **95.38%**
+* Linear SVM also achieved the highest F1 Score of **89.17%**
+
+These results show the effectiveness of **TF-IDF + supervised machine learning** for SMS spam detection.
 
 ---
 
-## Conclusion
+## 🎓 What I Learned
 
-This project demonstrates how **Natural Language Processing and Machine Learning can be combined to automatically detect SMS spam**.
+This project strengthened my practical understanding of:
 
-By converting text messages into numerical features using TF-IDF and comparing multiple classification algorithms, the project provides a practical approach to binary text classification.
+* **Natural Language Processing**
+* **Text preprocessing**
+* **TF-IDF feature engineering**
+* **Binary text classification**
+* **Supervised machine learning**
+* **Model evaluation**
+* **Precision, Recall, and F1 Score**
+* **Comparing multiple ML algorithms**
+* **End-to-end machine learning workflow**
 
-The project also demonstrates an important real-world machine learning workflow — from **raw data and preprocessing to feature engineering, model training, evaluation, comparison, and prediction**.
-
-Overall, this project strengthened my understanding of **NLP, text classification, supervised machine learning, model evaluation, and practical ML workflow implementation**.
+It also provided hands-on experience in taking a machine learning problem from **raw text data to a working prediction system**.
 
 ---
 
-## Author
+## 👩‍💻 Author
 
-**Varsha A**
-Varsha A. AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer | Python | SQL | Excel | Power BI | Prompt Engineer | Front-End Developer
+### Varsha A
+
+AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer
+
+Skills:** Python · SQL · Excel · Power BI · Machine Learning · NLP · Prompt Engineering · Front-End Development
