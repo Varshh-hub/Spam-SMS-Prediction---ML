@@ -130,6 +130,4 @@ Overall, this project strengthened my understanding of **NLP, text classificatio
 ## Author
 
 **Varsha A**
-
-B.Sc. Artificial Intelligence & Machine Learning
-Aspiring Machine Learning / Data Science Professional
+Varsha A. AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer | Python | SQL | Excel | Power BI | Prompt Engineer | Front-End Developer
