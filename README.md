@@ -147,6 +147,4 @@ It also provided hands-on experience in taking a machine learning problem from *
 
 ### Varsha A
 
-AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer
-
-Skills:** Python · SQL · Excel · Power BI · Machine Learning · NLP · Prompt Engineering · Front-End Development
+AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer | Python | SQL | Excel | Power BI | Prompt Engineer | Front-End Developer
