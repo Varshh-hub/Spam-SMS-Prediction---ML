@@ -84,6 +84,14 @@ LinearSVC is a Support Vector Machine algorithm designed for classification. It 
 It is particularly effective for high-dimensional text data, where TF-IDF can produce thousands of features.
 
 ---
+Model Performance
+
+The trained classification models were evaluated using Accuracy, Precision, Recall, and F1 Score.
+
+Model	Accuracy	Precision	Recall	F1 Score
+Logistic Regression	94.27%	95.42%	77.80%	85.71%
+Multinomial Naive Bayes	95.04%	89.31%	88.13%	88.72%
+Support Vector Machine	95.38%	92.65%	85.93%	89.17%
 
 ## Prediction on New Messages
 
